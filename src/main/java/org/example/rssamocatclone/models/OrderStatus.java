@@ -8,6 +8,7 @@ public class OrderStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @Column(name = "status_name")
     private String statusName;
     private String description;

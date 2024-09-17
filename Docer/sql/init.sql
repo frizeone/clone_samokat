@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS Users (
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     phone_number VARCHAR(20) UNIQUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at VARCHAR(255),
+    updated_at VARCHAR(255)
     );
 
 CREATE TABLE IF NOT EXISTS Categories (
@@ -22,8 +22,14 @@ CREATE TABLE IF NOT EXISTS Products (
     price DECIMAL(10, 2) NOT NULL,
     category_id BIGINT REFERENCES Categories(id) ON DELETE SET NULL,
     stock_quantity INTEGER NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at VARCHAR(255),
+    updated_at VARCHAR(255)
+    );
+   
+   CREATE TABLE IF NOT EXISTS OrderStatus (
+    id BIGSERIAL PRIMARY KEY,
+    status_name VARCHAR(255) NOT NULL,
+    description TEXT
     );
 
 CREATE TABLE IF NOT EXISTS Orders (
@@ -31,8 +37,8 @@ CREATE TABLE IF NOT EXISTS Orders (
     user_id BIGINT REFERENCES Users(id) ON DELETE CASCADE,
     total_price DECIMAL(10, 2) NOT NULL,
     status_id BIGINT REFERENCES OrderStatus(id) ON DELETE SET NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at VARCHAR(255),
+    updated_at VARCHAR(255)
     );
 
 CREATE TABLE IF NOT EXISTS OrderItems (
@@ -43,16 +49,12 @@ CREATE TABLE IF NOT EXISTS OrderItems (
     price_per_unit DECIMAL(10, 2) NOT NULL
     );
 
-CREATE TABLE IF NOT EXISTS OrderStatus (
-    id BIGSERIAL PRIMARY KEY,
-    status_name VARCHAR(255) NOT NULL,
-    description TEXT
-    );
+
 
 CREATE TABLE IF NOT EXISTS Cart (
     id BIGSERIAL PRIMARY KEY,
     user_id BIGINT REFERENCES Users(id) ON DELETE CASCADE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at VARCHAR(255)
     );
 
 CREATE TABLE IF NOT EXISTS CartItems (

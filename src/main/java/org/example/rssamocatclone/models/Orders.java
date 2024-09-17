@@ -7,19 +7,22 @@ import java.util.List;
 @Entity
 @Table(name = "orders")
 public class Orders {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "user_id")
-    @OneToOne(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id")
     private Users users;
 
     @Column(name = "total_price")
     private int totalPrice;
 
-    @Column(name = "status_id")
-    @OneToOne(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id")
     private OrderStatus statusId;
 
     @Column(name = "created_at")

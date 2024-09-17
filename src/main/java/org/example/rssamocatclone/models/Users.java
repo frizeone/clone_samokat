@@ -31,14 +31,4 @@ public class Users {
     @Column(name = "updated_at")
     private String updatedAt;
 
-    public Users(int id, String email, String passwordHash, String firstName, String lastName, String phoneNumber, String createdAt, String updatedAt) {
-        this.id = id;
-        this.email = email;
-        this.passwordHash = passwordHash;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
 }

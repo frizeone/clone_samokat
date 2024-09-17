@@ -18,8 +18,9 @@ public class Products {
 
     private int price;
 
-    @Column(name = "category_id")
-    @OneToOne(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id")
     private Categories categoriesId;
 
     @Column(name = "stock_quantity")
