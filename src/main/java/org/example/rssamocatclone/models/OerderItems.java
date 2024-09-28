@@ -17,6 +17,7 @@ public class OerderItems {
     @OneToMany(mappedBy = "product_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Products> productId;
 
+    @Column(name = "quantity")
     private int quantity;
 
     @Column(name = "price_per_unit")

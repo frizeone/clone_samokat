@@ -21,6 +21,7 @@ public class Orders {
     private int totalPrice;
 
 
+    @Column(name = "status_id")
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
     private OrderStatus statusId;

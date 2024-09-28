@@ -11,5 +11,7 @@ public class OrderStatus {
 
     @Column(name = "status_name")
     private String statusName;
+
+    @Column(name = "description")
     private String description;
 }

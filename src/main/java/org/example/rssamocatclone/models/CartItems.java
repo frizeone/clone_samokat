@@ -11,11 +11,14 @@ public class CartItems {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Column(name = "cart_id")
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Cart cartId;
 
+    @Column(name = "product_id")
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Products> productId;
 
+    @Column(name = "quantity")
     private int quantity;
 }
