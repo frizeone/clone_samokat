@@ -2,6 +2,7 @@ package org.example.rssamocatclone.models;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -12,24 +13,24 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
+    @ManyToOne
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_USER"), nullable = false)
     private Users users;
 
     @Column(name = "total_price")
-    private int totalPrice;
+    private Double totalPrice;
 
-
-    @Column(name = "status_id")
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
-    private OrderStatus statusId;
+    @ManyToOne
+    @JoinColumn(name = "status_id", foreignKey = @ForeignKey(name = "FK_STATUS"))
+    private OrderStatus status;
 
     @Column(name = "created_at")
-    private String createdAt;
+    private String createdAt = LocalDateTime.now().toString();
 
     @Column(name = "update_at")
-    private String updatedAt;
+    private String updatedAt = LocalDateTime.now().toString();
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderItems> orderItems;
 
 }
