@@ -21,4 +21,36 @@ public class Cart {
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
     private List<CartItems> cartItems;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public List<CartItems> getCartItems() {
+        return cartItems;
+    }
+
+    public void setCartItems(List<CartItems> cartItems) {
+        this.cartItems = cartItems;
+    }
 }

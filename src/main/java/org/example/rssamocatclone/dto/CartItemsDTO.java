@@ -7,9 +7,41 @@ public class CartItemsDTO {
 
     private int id;
 
-    private CartDTO cartDTOId;
+    private int cartDTOId;
 
-    private List<ProductsDTO> productId;
+    private int productId;
 
     private int quantity;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCartDTOId() {
+        return cartDTOId;
+    }
+
+    public void setCartDTOId(int cartDTOId) {
+        this.cartDTOId = cartDTOId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }
