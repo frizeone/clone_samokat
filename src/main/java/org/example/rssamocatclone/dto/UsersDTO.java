@@ -1,6 +1,8 @@
 package org.example.rssamocatclone.dto;
 
-public class UsersDTO {
+import org.springframework.hateoas.RepresentationModel;
+
+public class UsersDTO extends RepresentationModel<UsersDTO> {
 
     private int id;
 
