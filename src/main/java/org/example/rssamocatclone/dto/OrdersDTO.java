@@ -1,10 +1,12 @@
 package org.example.rssamocatclone.dto;
 
 
+import org.springframework.hateoas.RepresentationModel;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class OrdersDTO {
+public class OrdersDTO extends RepresentationModel<OrdersDTO> {
 
     private int id;
     private int userId;
@@ -12,6 +14,21 @@ public class OrdersDTO {
     private String status;
     private LocalDateTime createdAt;
     private List<OrderItemsDTO> orderItems;
+
+    public OrdersDTO(int id, int userId, Double totalPrice, String status, LocalDateTime createdAt) {
+        this.id = id;
+        this.userId = userId;
+        this.totalPrice = totalPrice;
+        this.status = status;
+        this.createdAt = createdAt;
+    }
+
+    public OrdersDTO() {
+
+    }
+
+    public OrdersDTO(int userId, Double totalPrice, String status) {
+    }
 
     public int getId() {
         return id;
@@ -59,5 +76,9 @@ public class OrdersDTO {
 
     public void setOrderItems(List<OrderItemsDTO> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    public void toAuditFormat() {
+
     }
 }

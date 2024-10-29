@@ -1,0 +1,41 @@
+scalar DateTime
+
+type OrderItem {
+    id: ID!
+    orderId: Int!
+    productId: Int!
+    quantity: Int
+    pricePerUnit: Float
+}
+
+type Order {
+    id: ID!
+    userId: Int!
+    totalPrice: Float
+    status: String
+    createdAt: DateTime
+    orderItems: [OrderItem]
+}
+
+type Query {
+    getOrderById(id: Int): Order
+    getAllOrders: [Order]
+}
+
+type Mutation {
+    createOrder(orderInput: OrderInput): Order
+}
+
+input OrderItemInput {
+    productId: Int!
+    quantity: Int!
+    pricePerUnit: Float!
+}
+
+input OrderInput {
+    userId: Int!
+    totalPrice: Float!
+    status: String!
+    createdAt: DateTime
+    orderItems: [OrderItemInput!]
+}

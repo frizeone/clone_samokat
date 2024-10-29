@@ -5,7 +5,6 @@ import org.example.rssamocatclone.Services.OrdersService;
 import org.example.rssamocatclone.dto.OrdersDTO;
 import org.example.rssamocatclone.models.Orders;
 import org.example.rssamocatclone.repository.OrdersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -56,5 +55,13 @@ public class OrdersServiceImpl implements OrdersService {
     // Удалить заказ
     public void deleteOrder(int id) {
         ordersRepository.deleteById(id);
+    }
+
+
+    @Override
+    public List<OrdersDTO> findOrdersByUserId(int id) {
+        List<Orders> orders = ordersRepository.findOrdersByUserId(id);
+        List<OrdersDTO> result = orders.stream().map(OrdersMapper::toDTO).collect(Collectors.toList());
+        return result;
     }
 }

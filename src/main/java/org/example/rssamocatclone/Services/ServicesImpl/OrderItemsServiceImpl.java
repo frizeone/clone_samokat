@@ -10,6 +10,7 @@ import org.example.rssamocatclone.repository.ProductsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,5 +62,11 @@ public class OrderItemsServiceImpl implements OrderItemsService {
     // Delete
     public void deleteOrderItem(int id) {
         orderItemsRepository.deleteById(id);
+    }
+
+    public List<OrderItemsDTO> findOrderItemsByOrderId(int id){
+        List<OrderItems> orderItem = orderItemsRepository.findOrderItemsByOrderId(id);
+        List<OrderItemsDTO> result = orderItem.stream().map(OrderItemsMapper::toDTO).collect(Collectors.toList());
+        return result;
     }
 }

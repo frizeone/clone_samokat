@@ -14,4 +14,6 @@ public interface OrdersService {
     OrdersDTO updateOrder(int id, OrdersDTO ordersDTO);
 
     void deleteOrder(int id);
+
+    List<OrdersDTO> findOrdersByUserId(int id);
 }

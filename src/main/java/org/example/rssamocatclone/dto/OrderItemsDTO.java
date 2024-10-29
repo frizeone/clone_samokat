@@ -11,6 +11,15 @@ public class OrderItemsDTO {
     private Integer quantity;
     private Double pricePerUnit;
 
+    public OrderItemsDTO() {
+    }
+
+    public OrderItemsDTO(int productId, Integer quantity, Double pricePerUnit) {
+        this.productId = productId;
+        this.quantity = quantity;
+        this.pricePerUnit = pricePerUnit;
+    }
+
     public int getId() {
         return id;
     }
