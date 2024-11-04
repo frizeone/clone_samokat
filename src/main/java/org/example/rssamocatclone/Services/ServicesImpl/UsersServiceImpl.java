@@ -1,5 +1,6 @@
 package org.example.rssamocatclone.Services.ServicesImpl;
 
+import jakarta.transaction.Transactional;
 import org.example.rssamocatclone.DTOMapper.UsersMapper;
 import org.example.rssamocatclone.Services.UsersService;
 import org.example.rssamocatclone.dto.UsersDTO;
@@ -55,5 +56,10 @@ public class UsersServiceImpl implements UsersService {
 
     public void deleteUser(int id) {
         userRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void createUser(Users user) {
+         userRepository.save(user);
     }
 }

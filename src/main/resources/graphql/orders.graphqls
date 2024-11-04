@@ -17,6 +17,16 @@ type Order {
     orderItems: [OrderItem]
 }
 
+type User {
+    id: ID!
+    email: String!
+    firstName: String
+    lastName: String
+    phoneNumber: String
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+
 type Query {
     getOrderById(id: Int): Order
     getAllOrders: [Order]
@@ -24,6 +34,7 @@ type Query {
 
 type Mutation {
     createOrder(orderInput: OrderInput): Order
+    createUser(userInput: UserInput): User
 }
 
 input OrderItemInput {
@@ -38,4 +49,13 @@ input OrderInput {
     status: String!
     createdAt: DateTime
     orderItems: [OrderItemInput!]
+}
+
+input UserInput {
+    id: Int!
+    email: String!
+    passwordHash: String!
+    firstName: String
+    lastName: String
+    phoneNumber: String
 }

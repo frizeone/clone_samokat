@@ -8,6 +8,7 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,12 +25,17 @@ public class OrdersGraphQLController {
     @MutationMapping
     public OrdersDTO createOrder(@Argument("orderInput") OrderInput orderInput) {
         // Проверка входных данных
-        if (orderInput == null || orderInput.getUserId() < 0 || orderInput.getTotalPrice() < 0 || orderInput.getOrderItems() == null) {
+        if (orderInput == null || orderInput.getUserId() < 0 ||
+                orderInput.getTotalPrice() < 0 ||
+                orderInput.getOrderItems() == null ||
+                orderInput.getOrderItems().isEmpty()) {
             throw new IllegalArgumentException("Invalid order input");
         }
 
         // Создание нового заказа с использованием конструктора
-        OrdersDTO newOrder = new OrdersDTO(orderInput.getUserId(), orderInput.getTotalPrice(), orderInput.getStatus());
+        OrdersDTO newOrder = new OrdersDTO(orderInput.getUserId(),
+                orderInput.getTotalPrice(),
+                orderInput.getStatus());
 
         // Преобразование orderItems с использованием Stream API
         List<OrderItemsDTO> orderItemsDTOs = orderInput.getOrderItems().stream()
@@ -43,7 +49,6 @@ public class OrdersGraphQLController {
 
         return ordersService.createOrder(newOrder);
     }
-
 
     // Пример запроса: получение заказа по ID
     @SchemaMapping(typeName = "Query", field = "getOrderById")

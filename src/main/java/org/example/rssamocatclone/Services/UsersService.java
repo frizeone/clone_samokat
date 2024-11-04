@@ -2,6 +2,7 @@ package org.example.rssamocatclone.Services;
 
 
 import org.example.rssamocatclone.dto.UsersDTO;
+import org.example.rssamocatclone.models.Users;
 
 import java.util.List;
 
@@ -16,5 +17,7 @@ public interface UsersService {
     UsersDTO updateUser(int id, UsersDTO usersDTO);
 
     void deleteUser(int id);
+
+    void createUser(Users user);
 
 }

@@ -20,6 +20,8 @@ public class OrderStatus {
     @OneToMany(mappedBy = "status", cascade = CascadeType.ALL)
     private List<Orders> orders;
 
+
+
     public int getId() {
         return id;
     }

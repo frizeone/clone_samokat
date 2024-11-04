@@ -13,7 +13,7 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_USER"), nullable = false)
     private Users users;
 
@@ -88,4 +88,6 @@ public class Orders {
     public void setOrderItems(List<OrderItems> orderItems) {
         this.orderItems = orderItems;
     }
+
+
 }
