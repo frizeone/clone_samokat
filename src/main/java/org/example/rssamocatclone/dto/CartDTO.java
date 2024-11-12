@@ -3,6 +3,7 @@ package org.example.rssamocatclone.dto;
 
 import org.example.rssamocatclone.models.CartItems;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class CartDTO {
@@ -45,5 +46,9 @@ public class CartDTO {
 
     public void setCartItems(List<CartItemsDTO> cartItems) {
         this.cartItems = cartItems;
+    }
+
+    public String logMethod(){
+        return "[" + LocalDateTime.now().toString() + "]" +  " -> " + this.userId + " " + this.createdAt + " " + this.cartItems;
     }
 }

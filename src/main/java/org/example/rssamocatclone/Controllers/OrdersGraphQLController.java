@@ -50,13 +50,13 @@ public class OrdersGraphQLController {
         return ordersService.createOrder(newOrder);
     }
 
-    // Пример запроса: получение заказа по ID
+
     @SchemaMapping(typeName = "Query", field = "getOrderById")
     public OrdersDTO getOrderById(int id) {
         return ordersService.getOrderById(id);
     }
 
-    // Пример запроса: получение всех заказов
+
     @SchemaMapping(typeName = "Query", field = "getAllOrders")
     public List<OrdersDTO> getAllOrders() {
         return ordersService.getAllOrders();

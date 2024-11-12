@@ -1,37 +1,16 @@
-version: '3.8'
-
 services:
-  postgres:
-    image: postgres:14-alpine
-    container_name: samokat_postgres
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: rabbitmq
+    hostname: rabbitmq
+    restart: unless-stopped
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: 123456789
-      POSTGRES_DB: samokat_db
+      TZ: Europe/Moscow
+      RABBITMQ_DEFAULT_USER: rab
+      RABBITMQ_DEFAULT_PASS: 1234
+      RABBITMQ_DEFAULT_VHOST: vhost
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-#      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./rabbitmq:/var/lib/rabbitmq
     ports:
-      - "5432:5432"
-    networks:
-      - samokat_network
-
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: 123456789
-    ports:
-      - "8080:80"
-    depends_on:
-      - postgres
-    networks:
-      - samokat_network
-
-volumes:
-  postgres_data:
-
-networks:
-  samokat_network:
-    driver: bridge
+      - "5672:5672"
+      - "15672:15672"

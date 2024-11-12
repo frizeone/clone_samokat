@@ -2,6 +2,8 @@ package org.example.rssamocatclone.dto;
 
 import org.springframework.hateoas.RepresentationModel;
 
+import java.time.LocalDateTime;
+
 public class UsersDTO extends RepresentationModel<UsersDTO> {
 
     private int id;
@@ -82,5 +84,9 @@ public class UsersDTO extends RepresentationModel<UsersDTO> {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String logMethod(){
+        return "[" + LocalDateTime.now().toString() + "]" +  " -> " + this.getCreatedAt() + " " + this.getUpdatedAt() + " " + this.getFirstName() + " " + this.getLastName() + " " + this.getPhoneNumber() + " " + this.getEmail() + " " + this.getPasswordHash();
     }
 }

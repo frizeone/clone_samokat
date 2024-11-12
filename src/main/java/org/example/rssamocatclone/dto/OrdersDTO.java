@@ -82,4 +82,7 @@ public class OrdersDTO extends RepresentationModel<OrdersDTO> {
     public void setOrderItems(List<OrderItemsDTO> orderItems) {
         this.orderItems = orderItems;
     }
+    public String logMethod(){
+        return "[" + LocalDateTime.now().toString() + "]" +  " -> " + this.userId + " " + this.totalPrice + " " + this.status + " " + this.createdAt + " " + this.orderItems ;
+    }
 }

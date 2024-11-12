@@ -1,5 +1,6 @@
 package org.example.rssamocatclone.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -58,5 +59,8 @@ public class OrderItemsDTO {
 
     public void setPricePerUnit(Double pricePerUnit) {
         this.pricePerUnit = pricePerUnit;
+    }
+    public String logMethod(){
+        return "[" + LocalDateTime.now().toString() + "]" +  " -> " + this.orderId + " " + this.productId + " " + this.quantity + " " + this.pricePerUnit;
     }
 }

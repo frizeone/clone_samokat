@@ -52,7 +52,6 @@ input OrderInput {
 }
 
 input UserInput {
-    id: Int!
     email: String!
     passwordHash: String!
     firstName: String

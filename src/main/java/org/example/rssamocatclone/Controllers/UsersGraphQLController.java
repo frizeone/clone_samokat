@@ -1,7 +1,5 @@
 package org.example.rssamocatclone.Controllers;
 
-
-
 import org.example.rssamocatclone.Services.UsersService; // Убедитесь, что у вас есть сервис для работы с пользователями
 import org.example.rssamocatclone.dto.UserInput;
 import org.example.rssamocatclone.models.Users;
@@ -20,15 +18,13 @@ public class UsersGraphQLController {
         this.usersService = usersService;
     }
 
-    // Мутация для создания нового пользователя
     @MutationMapping
     public void createUser(@Argument("userInput") UserInput userInput) {
-        // Проверка входных данных
+
         if (userInput == null || userInput.getEmail() == null || userInput.getPasswordHash() == null) {
             throw new IllegalArgumentException("Invalid user input");
         }
 
-        // Создание нового пользователя
         Users newUser = new Users();
         newUser.setId(userInput.getId());
         newUser.setEmail(userInput.getEmail());

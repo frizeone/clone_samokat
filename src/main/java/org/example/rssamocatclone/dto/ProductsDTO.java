@@ -1,6 +1,8 @@
 package org.example.rssamocatclone.dto;
 
 
+import java.time.LocalDateTime;
+
 public class ProductsDTO {
 
 
@@ -84,4 +86,9 @@ public class ProductsDTO {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public String logMethod(){
+        return "[" + LocalDateTime.now().toString() + "]" +  " -> " + this.getName() + " -> " + this.getDescription() + " -> " + this.getPrice() + " -> " + this.getCategoryName() + " -> " + this.getStockQuantity() + " -> " + this.getUpdatedAt();
+    }
 }
+

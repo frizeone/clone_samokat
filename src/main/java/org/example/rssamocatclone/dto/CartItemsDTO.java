@@ -1,5 +1,6 @@
 package org.example.rssamocatclone.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -43,5 +44,9 @@ public class CartItemsDTO {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String logMethod(){
+        return "[" + LocalDateTime.now().toString() + "]" +  " -> " + this.cartDTOId + " " + this.productId + " " + this.quantity ;
     }
 }

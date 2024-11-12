@@ -1,6 +1,8 @@
 package org.example.rssamocatclone.dto;
 
 
+import java.time.LocalDateTime;
+
 public class CategoriesDTO {
 
     private int id;
@@ -31,5 +33,9 @@ public class CategoriesDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String logMethod(){
+        return "[" + LocalDateTime.now().toString() + "]" +  " -> " + this.name + " " + this.description;
     }
 }

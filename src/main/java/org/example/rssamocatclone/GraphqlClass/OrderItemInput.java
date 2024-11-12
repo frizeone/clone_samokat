@@ -5,7 +5,6 @@ public class OrderItemInput {
     private Integer quantity;
     private Double pricePerUnit;
 
-    // Геттеры и сеттеры
 
     public int getProductId() {
         return productId;
